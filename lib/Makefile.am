@@ -80,7 +80,8 @@ libobj_la_SOURCES =
 libobj_la_LIBADD = $(LTLIBOBJS)
 
 libsasl2_la_SOURCES = $(common_sources) $(common_headers)
-libsasl2_la_LDFLAGS = -version-info $(sasl_version) -no-undefined
+libsasl2_la_LDFLAGS = -version-info $(sasl_version) -no-undefined -Wl,--version-script=$(top_srcdir)/Versions
+libsasl2_la_DEPENDENCIES = $(LTLIBOBJS) $(top_srcdir)/Versions
 
 libsasl2_la_LIBADD = $(SASL_DL_LIB) $(SASL_STATIC_LIBS) $(LIB_SOCKET) $(LIB_DOOR) $(PLUGIN_COMMON_OBJS)
 if BUILD_LIBOBJ
